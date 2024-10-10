@@ -1,0 +1,17 @@
+version: "2"
+services:
+  node:
+    build: .
+    environment:
+      - PORT=3500
+    ports:
+      - "8000:3500"
+    depends_on:
+      - mongodb
+    restart: always
+
+  mongodb:
+    image: mongo
+    restart: always
+    volumes:
+      - ./data:/data/db
